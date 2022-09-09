@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "craco eject"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@aircall/tractor": "^1.26.0",
     "@reduxjs/toolkit": "^1.8.4",
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
@@ -26,7 +25,6 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@craco/craco": "^6.4.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
@@ -36,7 +34,6 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/styled-components": "^5.1.26",
-    "craco-alias": "^3.0.1",
     "typescript": "^4.7.4"
   },
   "eslintConfig": {
