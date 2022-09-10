@@ -1,12 +1,19 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 
-import saga from "./sagas";
+import signInReducer from "../features/users/sign-in/sign-in.slice";
+import userReducer from "../features/users/user/user.slice";
+import callListReducer from "../features/calls/calls-list/call-list.slice";
+import saga from "./app.sagas";
 
 let sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    signIn: signInReducer,
+    user: userReducer,
+    callList: callListReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
 });

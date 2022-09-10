@@ -2,11 +2,13 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
+import { ThemeProvider } from "@mui/material";
 
-import { store } from "./app/store";
+import theme from "./ui/themes";
+import { store } from "./app/app.store";
 import reportWebVitals from "./reportWebVitals";
 
-import App from "./pages/App";
+import App from "./app/app.component";
 
 import "./index.scss";
 
@@ -17,7 +19,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
