@@ -104,7 +104,8 @@ export const {
 } = callListSlice.actions;
 
 export const selectCallListNodes = (state: RootState) => state.callList.nodes;
+export const selectCallListTotalCount = (state: RootState) =>
+  state.callList.totalCount;
 // export const selectCallList = (state: RootState) => state.callList.hasNextPage;
-// export const selectCallList = (state: RootState) => state.callList.totalCount;
 
 export default callListSlice.reducer;

@@ -7,11 +7,16 @@ import CallReceivedIcon from "@mui/icons-material/CallReceived";
 import VoicemailIcon from "@mui/icons-material/Voicemail";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import UnarchiveIcon from "@mui/icons-material/Unarchive";
+
 import { Link } from "react-router-dom";
-import { CallIconComponent } from "../../../../ui/components/call-icon.component";
 import { useNavigate } from "react-router";
+
+import { CallIconComponent } from "../../../../ui/components/call-icon.component";
 import { putCallListArchivePending } from "../call-list.slice";
 import { useAppDispatch } from "../../../../app/app.hooks";
+import { ArchiveIconComponent } from "../../../../ui/components/archive-icon.component";
 
 export function CallItemComponent(props: { node: any }) {
   const { node } = props;
@@ -44,11 +49,7 @@ export function CallItemComponent(props: { node: any }) {
         sx={{ width: "25px" }}
         onClick={() => dispatch(putCallListArchivePending({ id: node.id }))}
       >
-        {node.is_archived ? (
-          <UnarchiveOutlinedIcon sx={{ color: "#acacac" }} fontSize={"small"} />
-        ) : (
-          <ArchiveOutlinedIcon sx={{ color: "#646464" }} fontSize={"small"} />
-        )}
+        <ArchiveIconComponent isArchived={node.is_archived} />
       </TableCell>
     </TableRow>
   );

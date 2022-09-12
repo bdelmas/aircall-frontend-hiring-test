@@ -4,14 +4,21 @@ import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 
 import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
-import { fetchCallListPending, selectCallListNodes } from "./call-list.slice";
+import {
+  fetchCallListPending,
+  selectCallListNodes,
+  selectCallListTotalCount,
+} from "./call-list.slice";
 import { CallItemComponent } from "./components/call-item.component";
 import styled from "@emotion/styled";
 import { H4 } from "../../../ui/atoms/h4";
+import { Pagination } from "@mui/material";
 
 export function CallListComponent() {
   const dispatch = useAppDispatch();
   const nodes = useAppSelector(selectCallListNodes);
+  const totalCount = useAppSelector(selectCallListTotalCount);
+  const maxPage = Math.floor(totalCount / 10);
 
   useEffect(() => {
     dispatch(fetchCallListPending({}));
@@ -20,7 +27,15 @@ export function CallListComponent() {
   return (
     <CallListContainer>
       <TitleContainer>
-        <H4 sx={{ display: "inline-block" }}>Calls List</H4>
+        <H4
+          sx={{
+            display: "inline-block",
+            backgroundImage:
+              "linear-gradient(310deg, rgb(127 155 255), #b066dcc9)",
+          }}
+        >
+          Calls List
+        </H4>
       </TitleContainer>
       <TableContainer
         sx={{
@@ -35,6 +50,16 @@ export function CallListComponent() {
           </TableBody>
         </Table>
       </TableContainer>
+      <PaginationContainer>
+        <Pagination
+          count={maxPage}
+          color="primary"
+          sx={{ textAlign: "center" }}
+          onChange={(e, v) =>
+            dispatch(fetchCallListPending({ offset: Math.floor(v * 10 - 10) }))
+          }
+        />
+      </PaginationContainer>
     </CallListContainer>
   );
 }
@@ -69,4 +94,11 @@ const TitleContainer = styled.div`
   @media (min-width: 640px) {
     text-align: left;
   }
+`;
+
+const PaginationContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2rem 0;
 `;

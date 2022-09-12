@@ -17,7 +17,9 @@ export function fetchCallList(action: {
   payload: fetchCallListPayload;
   type: string;
 }) {
-  return () => ax.get("/calls", getConfig());
+  const { offset, limit } = action.payload;
+  return () =>
+    ax.get(`/calls?offset=${offset! | 0}&limit=${limit! | 10}`, getConfig());
 }
 
 export type putCallListArchivePayload = {

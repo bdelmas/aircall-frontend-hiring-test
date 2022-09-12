@@ -18,6 +18,7 @@ import {
 import { H4 } from "../../../ui/atoms/h4";
 import { CallIconComponent } from "../../../ui/components/call-icon.component";
 import { putCallListArchivePending } from "../calls-list/call-list.slice";
+import { ArchiveIconComponent } from "../../../ui/components/archive-icon.component";
 
 export function CallShowComponent() {
   const dispatch = useAppDispatch();
@@ -57,17 +58,7 @@ export function CallShowComponent() {
             onClick={() => dispatch(putCallShowArchivePending({ id: call.id }))}
             style={{ cursor: "pointer" }}
           >
-            {call.is_archived ? (
-              <UnarchiveOutlinedIcon
-                sx={{ color: "#acacac" }}
-                fontSize={"small"}
-              />
-            ) : (
-              <ArchiveOutlinedIcon
-                sx={{ color: "#646464" }}
-                fontSize={"small"}
-              />
-            )}
+            <ArchiveIconComponent isArchived={call.is_archived} />
           </div>
         </Row>
         <Row>Caller's number: {call.from}</Row>

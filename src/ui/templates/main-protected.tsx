@@ -25,5 +25,5 @@ export default function MainProtected() {
 
 const Container = styled.div`
   // Footer
-  margin-bottom: 7rem;
+  margin-bottom: 10rem;
 `;
