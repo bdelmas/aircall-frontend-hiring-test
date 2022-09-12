@@ -31,7 +31,6 @@ function* fetchCallList(
 ): Generator<StrictEffect, void, callListDTO> {
   try {
     let { data } = yield call(callListAPI.fetchCallList(action));
-    console.log(data);
     yield put(fetchCallListFullfilled(data));
   } catch (e) {
     yield put({ type: callListSlice.actions.fetchCallListRejected.type });

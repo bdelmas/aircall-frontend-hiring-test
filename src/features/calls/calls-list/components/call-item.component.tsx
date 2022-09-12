@@ -7,6 +7,7 @@ import CallReceivedIcon from "@mui/icons-material/CallReceived";
 import VoicemailIcon from "@mui/icons-material/Voicemail";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
+import { Link } from "react-router-dom";
 
 export function CallItemComponent(props: { node: any }) {
   const { node } = props;
@@ -17,7 +18,9 @@ export function CallItemComponent(props: { node: any }) {
       <TableCell sx={{ width: "25px" }} component="th" scope="node">
         <CallIcon direction={node.direction} call_type={node.call_type} />
       </TableCell>
-      <TableCell>{node.from}</TableCell>
+      <TableCell>
+        <Link to={`/calls/${node.id}`}>{node.from}</Link>
+      </TableCell>
       <TableCell align="right">
         {dayjs(new Date(node.created_at)).fromNow()}
       </TableCell>

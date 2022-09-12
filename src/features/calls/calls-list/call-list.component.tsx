@@ -34,6 +34,7 @@ export function CallListComponent() {
     </CallListContainer>
   );
 }
+
 const CallListContainer = styled.div`
   width: auto;
   margin-top: 2rem;
