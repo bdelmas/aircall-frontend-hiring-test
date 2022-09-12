@@ -30,8 +30,6 @@ export function CallListComponent() {
         <H4
           sx={{
             display: "inline-block",
-            backgroundImage:
-              "linear-gradient(310deg, rgb(127 155 255), #b066dcc9)",
           }}
         >
           Calls List
