@@ -1,18 +1,50 @@
-# Getting Started with Create React App
+# Aircall Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+When you run the challenge, be sure to run it in production mode (`yarn p`). If you want to run it in `dev` mode, remember that it is running with the `strict mode` on so some bugs in `dev` mode may appear but won't appear in `prod`.
+
+Because `strict mode` is used in `dev` mode, there is discrepencies between `prod` and `dev`, because React will treat the lifecycle more strictly. React does it to be able to spot lifecycle bugs more easily. But it can also add bugs on it's on because of that lifecycle change. You can see the effect for instance on this challenge. If you run it in `dev` mode some API calls will be done twice. But if you run it in `prod` mode with `yarn p` all API calls will done as expected and will be called only once.
+
+To see more about this, you can check the React documentation of `strict mode` [here](https://reactjs.org/docs/strict-mode.html).
+
+This [link](https://stackoverflow.com/a/60619061) from Stackoverflow summaries it:
+
+StrictMode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them (which can be quite useful).
+
+
+### Project Structure
+The project is using the `features` and `pages` file structure with DDD and Screaming Architecture. A good intro can be found [here](https://profy.dev/article/react-folder-structure#discussion-feature-driven-folder-structure-and-screaming-architecture).
+
+The `ui` folder is here in substiture of the more common `components` folder to be able to have more granularity and specification to the different ways a component can be. Usely on a big project `components` will be packed, but a `ui` folder with the atomic design approach solves that problem and make a big project with lots of components more manageable.
+
+Finally it uses `kebab-case` to name files and folders instead of the more common `CamelCase` to avoid to have to pull your hair once or twice every year because `CameCase` [broke your CI/CD pipeline](https://twitter.com/kentcdodds/status/1249870276688371713).
+
+The project has an:
+
+- `app` folder, everything about the app should be there (main store, main saga, libs, utils...),
+- `features` folder, cut as much as possible by domain with DDD,
+- `pages` folder, contains the different pages of the app,
+- `ui` folder, contains the themes and every component big or small that are shared accross the app.
+
+### Desktop and Mobile
+All screens starting from `375px` and higher are supported. It's the Mobile M screen on Chrome DevTools.
+
+### 
+
+----
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn s` or `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `yarn p`
+Runs the app in the production mode.
+
+### `yarn pp`
+Runs the app in the production mode, with the profile option on.
 
 ### `yarn test`
 
