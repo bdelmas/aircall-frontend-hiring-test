@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import CottageIcon from "@mui/icons-material/Cottage";
 
 import { CallShowComponent } from "../../features/calls/calls-show/call-show.component";
 import { H4 } from "../../ui/atoms/h4";
@@ -16,7 +17,10 @@ export function Call() {
       </TitleContainer>
       <BreadcumbsContainer>
         <Breadcrumbs aria-label="breadcrumb">
-          <Link to="/calls">Calls</Link>
+          <Link to="/calls">
+            <CottageIcon fontSize={"small"} />
+            Calls
+          </Link>
           <Typography
             sx={{
               textOverflow: "ellipsis",
@@ -61,4 +65,10 @@ const BreadcumbsContainer = styled.div`
 const Link = styled(RouterLink)`
   color: #595959;
   text-decoration: none;
+  display: flex;
+
+  svg {
+    margin-right: 0.5rem;
+    color: rgba(12, 169, 253, 0.84);
+  }
 `;
