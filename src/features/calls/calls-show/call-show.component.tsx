@@ -31,11 +31,15 @@ export function CallShowComponent() {
     };
   }, []);
 
+  //TODO: add loading card effect
   if (_.isEmpty(call)) return <></>;
 
   return (
-    <>
-      <CallShowContainer>
+    <div>
+      <CallShowDetailsContainer>
+        <TitleContainer>
+          <H4 sx={{ display: "inline-block" }}>Call Details</H4>
+        </TitleContainer>
         <Row>
           <div>
             <CallIconComponent
@@ -67,35 +71,50 @@ export function CallShowComponent() {
         <Row>
           Lasted: about {dayjs.duration(call.duration, "seconds").humanize()}
         </Row>
-      </CallShowContainer>
+      </CallShowDetailsContainer>
       {!_.isEmpty(call.notes) && (
-        <CallShowContainer>
-          <H4 sx={{ display: "inline-block", paddingLeft: "16px" }}>Notes:</H4>
+        <CallShowNoteContainer>
+          <TitleContainer>
+            <H4 sx={{ display: "inline-block" }}>Notes</H4>
+          </TitleContainer>
           {call.notes!.map((n) => {
             return <Note key={n.id}>{n.content}</Note>;
           })}
-        </CallShowContainer>
+        </CallShowNoteContainer>
       )}
-    </>
+    </div>
   );
 }
 
-const CallShowContainer = styled.div`
+const CallShowContainerBase = styled.div`
   display: flex;
   flex-direction: column;
   width: auto;
-  margin-top: 2rem;
+  max-width: 40rem;
+  margin: 2rem auto 0;
 
   padding: 1rem;
 
+  background-color: white;
+  box-shadow: 0px 5px 30px 2px #00000024;
+  border: solid 1px #cfcfcf61;
+  border-left: none;
+  border-right: none;
+
   @media (min-width: 640px) {
-    margin: 4rem;
+    margin: 3rem auto;
 
     border-radius: 1rem;
     border: 1px solid #e7e7e7;
     box-shadow: 0 8px 15px 9px #80808021;
   }
 `;
+
+const CallShowDetailsContainer = styled(CallShowContainerBase)`
+  max-width: 40rem;
+`;
+
+const CallShowNoteContainer = styled(CallShowContainerBase)``;
 
 const Row = styled.div`
   flex: 1 1 auto;
@@ -116,5 +135,14 @@ const Note = styled.div`
 
   & > :not([hidden]) ~ :not([hidden]) {
     margin-top: 1rem;
+  }
+`;
+
+const TitleContainer = styled.div`
+  margin: 0 1rem;
+  text-align: center;
+
+  @media (min-width: 640px) {
+    text-align: left;
   }
 `;
