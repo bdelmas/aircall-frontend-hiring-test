@@ -60,6 +60,18 @@ export const callShowSlice = createSlice({
       state.status = "loading";
       state.node = undefined;
     },
+    putCallShowArchiveFullfilled: (state, action) => {
+      const { is_archived } = action.payload;
+
+      state.status = "idle";
+      state.node!.is_archived = is_archived;
+    },
+    putCallShowArchivePending: (state, action) => {
+      state.status = "loading";
+    },
+    putCallShowArchiveRejected: (state, action) => {
+      state.status = "failed";
+    },
   },
   // extraReducers: (builder) => {
   //   builder
@@ -81,6 +93,9 @@ export const {
   fetchCallShowPending,
   fetchCallShowRejected,
   deleteCall,
+  putCallShowArchivePending,
+  putCallShowArchiveRejected,
+  putCallShowArchiveFullfilled,
 } = callShowSlice.actions;
 
 export const selectCallShowNodes = (state: RootState) => state.callShow.node;

@@ -19,5 +19,16 @@ export function fetchCallShow(action: {
   return () => ax.get(`/calls/${action.payload.id}`, getConfig());
 }
 
-export const callShowAPI = { fetchCallShow };
+export type putCallShowArchivePayload = {
+  id: string;
+};
+
+export function putCallShowArchive(action: {
+  payload: putCallShowArchivePayload;
+  type: string;
+}) {
+  return () => ax.put(`/calls/${action.payload.id}/archive`, null, getConfig());
+}
+
+export const callShowAPI = { fetchCallShow, putCallShowArchive };
 export default callShowAPI;

@@ -12,10 +12,12 @@ import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
 import {
   deleteCall,
   fetchCallShowPending,
+  putCallShowArchivePending,
   selectCallShowNodes,
 } from "./call-show.slice";
 import { H4 } from "../../../ui/atoms/h4";
 import { CallIconComponent } from "../../../ui/components/call-icon.component";
+import { putCallListArchivePending } from "../calls-list/call-list.slice";
 
 export function CallShowComponent() {
   const dispatch = useAppDispatch();
@@ -51,7 +53,10 @@ export function CallShowComponent() {
           <div style={{ marginLeft: "auto" }}>
             {dayjs(new Date(call.created_at)).fromNow()}
           </div>
-          <div>
+          <div
+            onClick={() => dispatch(putCallShowArchivePending({ id: call.id }))}
+            style={{ cursor: "pointer" }}
+          >
             {call.is_archived ? (
               <UnarchiveOutlinedIcon
                 sx={{ color: "#acacac" }}
