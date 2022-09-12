@@ -14,9 +14,9 @@ StrictMode renders components twice (on dev but not production) in order to dete
 ### Project Structure
 The project is using the `features` and `pages` file structure with DDD and Screaming Architecture. A good intro can be found [here](https://profy.dev/article/react-folder-structure#discussion-feature-driven-folder-structure-and-screaming-architecture).
 
-The `ui` folder is here in substiture of the more common `components` folder to be able to have more granularity and specification to the different ways a component can be. Usely on a big project `components` will be packed, but a `ui` folder with the atomic design approach solves that problem and make a big project with lots of components more manageable.
+The `ui` folder is here in substitute of the more common `components` folder to be able to have more granularity and specification to the different ways what a component can be. On a big project `components` will be quickly packed, but a `ui` folder with the atomic design approach solves that problem and make it easier and more manageable even with a big project with lots of components.
 
-Finally it uses `kebab-case` to name files and folders instead of the more common `camelCase`/`PascalCase` to avoid to have to pull your hair once or twice every year because `CameCase` [broke your CI/CD pipeline](https://twitter.com/kentcdodds/status/1249870276688371713).
+Finally it uses `kebab-case` to name files and folders instead of the more common `camelCase`/`PascalCase` to avoid to have to pull your hair once or twice every year because `cameCase` [broke your CI/CD pipeline](https://twitter.com/kentcdodds/status/1249870276688371713).
 
 The project has an:
 
