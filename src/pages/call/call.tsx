@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
 import CottageIcon from "@mui/icons-material/Cottage";
-
-import { CallShowComponent } from "../../features/calls/calls-show/call-show.component";
-import { H4 } from "../../ui/atoms/h4";
+import { Link as RouterLink } from "react-router-dom";
 import { Breadcrumbs, Typography } from "@mui/material";
 import { useParams } from "react-router";
-import { Link as RouterLink } from "react-router-dom";
+
+import { CallShowComponent } from "../../features/calls/calls-show/call-show.component";
+import { LogoutIconComponent } from "../../ui/components/logout-icon.component";
+import { H4 } from "../../ui/atoms/h4";
 
 export function Call() {
   const { id } = useParams();
@@ -14,6 +15,7 @@ export function Call() {
     <CallsContainer>
       <TitleContainer>
         <H4 sx={{ display: "inline-block" }}>{`Aircall <3`}</H4>
+        <LogoutIconComponent />
       </TitleContainer>
       <BreadcumbsContainer>
         <Breadcrumbs aria-label="breadcrumb">
@@ -42,13 +44,18 @@ export function Call() {
 const CallsContainer = styled.div``;
 
 const TitleContainer = styled.div`
-  margin: 1rem auto;
+  position: relative;
+  margin: 1rem;
   text-align: center;
   max-width: 40rem;
 
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
   @media (min-width: 640px) {
+    justify-content: space-between;
     margin: 2rem auto;
-    text-align: left;
   }
 `;
 

@@ -1,14 +1,17 @@
-import { CallListComponent } from "../../features/calls/calls-list/call-list.component";
-import { H4 } from "../../ui/atoms/h4";
 import styled from "@emotion/styled";
 import { Breadcrumbs, Typography } from "@mui/material";
 import CottageIcon from "@mui/icons-material/Cottage";
+
+import { LogoutIconComponent } from "../../ui/components/logout-icon.component";
+import { CallListComponent } from "../../features/calls/calls-list/call-list.component";
+import { H4 } from "../../ui/atoms/h4";
 
 export function Calls() {
   return (
     <CallsContainer>
       <TitleContainer>
         <H4 sx={{ display: "inline-block" }}>Aircall</H4>
+        <LogoutIconComponent />
       </TitleContainer>
       <BreadcumbsContainer>
         <Breadcrumbs aria-label="breadcrumb">
@@ -38,12 +41,20 @@ export function Calls() {
 const CallsContainer = styled.div``;
 
 const TitleContainer = styled.div`
+  position: relative;
   margin: 1rem;
   max-width: 40rem;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
   text-align: center;
 
   @media (min-width: 640px) {
+    justify-content: space-between;
     margin: 2rem auto;
+
     text-align: left;
   }
 `;

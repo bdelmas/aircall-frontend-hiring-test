@@ -26,6 +26,9 @@ export const signInSlice = createSlice({
     fetchSignInRejected: (state, action) => {
       state.status = "failed";
     },
+    logout: (state) => {
+      state.isSignedIn = false;
+    },
   },
 });
 
@@ -33,6 +36,7 @@ export const {
   fetchSignInFullfilled,
   fetchSignInPending,
   fetchSignInRejected,
+  logout,
 } = signInSlice.actions;
 
 export const selectIsSignedIn = (state: RootState) => state.signIn.isSignedIn;

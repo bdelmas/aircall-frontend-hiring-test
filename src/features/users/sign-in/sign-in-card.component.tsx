@@ -3,13 +3,14 @@ import { useNavigate } from "react-router";
 import { Button, FormControlLabel, FormGroup, TextField } from "@mui/material";
 import styled from "@emotion/styled";
 
+import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
+import { fetchSignInPending, selectIsSignedIn } from "./sign-in.slice";
+
 import { Password } from "../../../ui/molecules/password";
 import { H4 } from "../../../ui/atoms/h4";
 import { P } from "../../../ui/atoms/p";
 import { Switch } from "../../../ui/atoms/switch";
 import theme from "../../../ui/themes";
-import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
-import { fetchSignInPending, selectIsSignedIn } from "./sign-in.slice";
 
 interface State {
   username: string;
