@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "s": "react-scripts start",
     "start": "react-scripts start",
+    "p": "react-scripts build && serve -s build",
+    "pp": "react-scripts build --profile && serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
