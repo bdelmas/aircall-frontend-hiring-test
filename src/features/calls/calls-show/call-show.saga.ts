@@ -44,6 +44,9 @@ function* fetchCallShow(
     let { data } = yield call(callShowAPI.fetchCallShow(action));
     yield put(fetchCallShowFullfilled({ node: data }));
   } catch (e) {
+    console.log(e);
+    console.log("fetchCallShow");
+
     cleanCookies();
     yield put(fetchCallShowRejected({}));
     window.location.href = "sign-in";
@@ -64,6 +67,10 @@ function* putCallShowArchive(
     let { data } = yield call(callShowAPI.putCallShowArchive(action));
     yield put(putCallShowArchiveFullfilled(data));
   } catch (e) {
+    console.log(e);
+    console.log("putCallShowArchive");
+    cleanCookies();
     yield put(putCallShowArchiveRejected({}));
+    window.location.href = "sign-in";
   }
 }

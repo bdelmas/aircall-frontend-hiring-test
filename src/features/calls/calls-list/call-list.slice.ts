@@ -34,21 +34,6 @@ const initialState: CallListState = {
   status: "idle",
 };
 
-// // The function below is called a thunk and allows us to perform async logic. It
-// // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// // will call the thunk with the `dispatch` function as the first argument. Async
-// // code can then be executed and other actions can be dispatched. Thunks are
-// // typically used to make async requests.
-// export const fetchCallList = createAsyncThunk(
-//   "callList/fetchCallList",
-//   async (amount?: number) => {
-//     const response = await callListAPI.fetchCallList();
-//     console.log(response);
-//     // The value we return becomes the `fulfilled` action payload
-//     return response;
-//   }
-// );
-
 export const callListSlice = createSlice({
   name: "callList",
   initialState,
@@ -79,19 +64,6 @@ export const callListSlice = createSlice({
       state.status = "failed";
     },
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(fetchCallList.pending, (state, action) => {
-  //       state.status = "loading";
-  //     })
-  //     .addCase(fetchCallList.fulfilled, (state, action) => {
-  //       state.status = "idle";
-  //       // state.callList = action.payload;
-  //     })
-  //     .addCase(fetchCallList.rejected, (state, action) => {
-  //       state.status = "failed";
-  //     });
-  // },
 });
 
 export const {
@@ -106,6 +78,5 @@ export const {
 export const selectCallListNodes = (state: RootState) => state.callList.nodes;
 export const selectCallListTotalCount = (state: RootState) =>
   state.callList.totalCount;
-// export const selectCallList = (state: RootState) => state.callList.hasNextPage;
 
 export default callListSlice.reducer;

@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
-import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import styled from "@emotion/styled";
 import _ from "lodash";
 import dayjs from "dayjs";
@@ -17,7 +15,6 @@ import {
 } from "./call-show.slice";
 import { H4 } from "../../../ui/atoms/h4";
 import { CallIconComponent } from "../../../ui/components/call-icon.component";
-import { putCallListArchivePending } from "../calls-list/call-list.slice";
 import { ArchiveIconComponent } from "../../../ui/components/archive-icon.component";
 
 export function CallShowComponent() {

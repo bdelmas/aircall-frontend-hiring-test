@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 import { RootState } from "../../../app/app.store";
 
@@ -26,21 +26,6 @@ export interface CallShowNote {
 const initialState: CallShowState = {
   status: "loading",
 };
-
-// // The function below is called a thunk and allows us to perform async logic. It
-// // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// // will call the thunk with the `dispatch` function as the first argument. Async
-// // code can then be executed and other actions can be dispatched. Thunks are
-// // typically used to make async requests.
-// export const fetchCallShow = createAsyncThunk(
-//   "callShow/fetchCallShow",
-//   async (amount?: number) => {
-//     const response = await callShowAPI.fetchCallShow();
-//     console.log(response);
-//     // The value we return becomes the `fulfilled` action payload
-//     return response;
-//   }
-// );
 
 export const callShowSlice = createSlice({
   name: "callShow",
@@ -73,19 +58,6 @@ export const callShowSlice = createSlice({
       state.status = "failed";
     },
   },
-  // extraReducers: (builder) => {
-  //   builder
-  //     .addCase(fetchCallShow.pending, (state, action) => {
-  //       state.status = "loading";
-  //     })
-  //     .addCase(fetchCallShow.fulfilled, (state, action) => {
-  //       state.status = "idle";
-  //       // state.callShow = action.payload;
-  //     })
-  //     .addCase(fetchCallShow.rejected, (state, action) => {
-  //       state.status = "failed";
-  //     });
-  // },
 });
 
 export const {
@@ -99,7 +71,5 @@ export const {
 } = callShowSlice.actions;
 
 export const selectCallShowNodes = (state: RootState) => state.callShow.node;
-// export const selectCallShow = (state: RootState) => state.callShow.hasNextPage;
-// export const selectCallShow = (state: RootState) => state.callShow.totalCount;
 
 export default callShowSlice.reducer;

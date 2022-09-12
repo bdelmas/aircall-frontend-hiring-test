@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
+import { Pagination } from "@mui/material";
+import styled from "@emotion/styled";
 
 import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
 import {
@@ -10,9 +12,7 @@ import {
   selectCallListTotalCount,
 } from "./call-list.slice";
 import { CallItemComponent } from "./components/call-item.component";
-import styled from "@emotion/styled";
 import { H4 } from "../../../ui/atoms/h4";
-import { Pagination } from "@mui/material";
 
 export function CallListComponent() {
   const dispatch = useAppDispatch();
@@ -21,7 +21,9 @@ export function CallListComponent() {
   const maxPage = Math.floor(totalCount / 10);
 
   useEffect(() => {
+    console.log("useEffect");
     dispatch(fetchCallListPending({}));
+    return console.log("returned");
   }, []);
 
   return (

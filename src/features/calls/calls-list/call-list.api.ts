@@ -18,6 +18,7 @@ export function fetchCallList(action: {
   type: string;
 }) {
   const { offset, limit } = action.payload;
+  console.log("test");
   return () =>
     ax.get(`/calls?offset=${offset! | 0}&limit=${limit! | 10}`, getConfig());
 }
