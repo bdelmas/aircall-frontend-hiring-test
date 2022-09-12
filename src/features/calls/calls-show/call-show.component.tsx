@@ -1,13 +1,10 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
-import styled from "@emotion/styled";
-import _ from "lodash";
-import VoicemailIcon from "@mui/icons-material/Voicemail";
-import CallMadeIcon from "@mui/icons-material/CallMade";
-import CallReceivedIcon from "@mui/icons-material/CallReceived";
-import dayjs from "dayjs";
 import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
+import styled from "@emotion/styled";
+import _ from "lodash";
+import dayjs from "dayjs";
 
 import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
 import {
@@ -16,6 +13,7 @@ import {
   selectCallShowNodes,
 } from "./call-show.slice";
 import { H4 } from "../../../ui/atoms/h4";
+import { CallIconComponent } from "../../../ui/components/call-icon.component";
 
 export function CallShowComponent() {
   const dispatch = useAppDispatch();
@@ -36,7 +34,10 @@ export function CallShowComponent() {
       <CallShowContainer>
         <Row>
           <div>
-            <CallIcon direction={call.direction} call_type={call.call_type} />{" "}
+            <CallIconComponent
+              direction={call.direction}
+              callType={call.call_type}
+            />{" "}
           </div>
           <div>{call.from}</div>
           <div style={{ marginLeft: "auto" }}>
@@ -111,25 +112,3 @@ const Note = styled.div`
     margin-top: 1rem;
   }
 `;
-
-function CallIcon(props: { direction: string; call_type: string }) {
-  const { direction, call_type } = props;
-
-  if (call_type === "voicemail") {
-    return <VoicemailIcon fontSize={"small"} sx={{ color: "yellow" }} />;
-  }
-
-  return direction === "outbound" ? (
-    <CallMadeIcon sx={{ color: getColorCall(call_type) }} />
-  ) : (
-    <CallReceivedIcon sx={{ color: getColorCall(call_type) }} />
-  );
-}
-
-function getColorCall(call_type: string) {
-  if (call_type === "missed") {
-    return "red";
-  }
-
-  return "green";
-}

@@ -20,5 +20,16 @@ export function fetchCallList(action: {
   return () => ax.get("/calls", getConfig());
 }
 
-export const callListAPI = { fetchCallList };
+export type postCallListArchivePayload = {
+  id: string;
+};
+
+export function postCallListArchive(action: {
+  payload: postCallListArchivePayload;
+  type: string;
+}) {
+  return () => ax.post(`/calls/${action.payload.id}`, getConfig());
+}
+
+export const callListAPI = { fetchCallList, postCallListArchive };
 export default callListAPI;

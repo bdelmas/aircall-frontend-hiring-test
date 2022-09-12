@@ -65,6 +65,18 @@ export const callListSlice = createSlice({
     fetchCallListRejected: (state, action) => {
       state.status = "failed";
     },
+    postCallListArchiveFullfilled: (state, action) => {
+      state.status = "idle";
+      // state.nodes = action.payload.nodes;
+      // state.totalCount = action.payload.totalCount;
+      // state.hasNextPage = action.payload.hasNextPage;
+    },
+    postCallListArchivePending: (state, action) => {
+      state.status = "loading";
+    },
+    postCallListArchiveRejected: (state, action) => {
+      state.status = "failed";
+    },
   },
   // extraReducers: (builder) => {
   //   builder
@@ -85,6 +97,9 @@ export const {
   fetchCallListFullfilled,
   fetchCallListPending,
   fetchCallListRejected,
+  postCallListArchiveFullfilled,
+  postCallListArchiveRejected,
+  postCallListArchivePending,
 } = callListSlice.actions;
 
 export const selectCallListNodes = (state: RootState) => state.callList.nodes;

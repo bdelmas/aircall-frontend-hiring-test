@@ -8,23 +8,42 @@ import VoicemailIcon from "@mui/icons-material/Voicemail";
 import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
 import { Link } from "react-router-dom";
+import { CallIconComponent } from "../../../../ui/components/call-icon.component";
+import { useNavigate } from "react-router";
+import { postCallListArchivePending } from "../call-list.slice";
+import { useAppDispatch } from "../../../../app/app.hooks";
 
 export function CallItemComponent(props: { node: any }) {
   const { node } = props;
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
   dayjs.extend(relativeTime);
 
   return (
-    <TableRow>
-      <TableCell sx={{ width: "25px" }} component="th" scope="node">
-        <CallIcon direction={node.direction} call_type={node.call_type} />
+    <TableRow sx={{ cursor: "pointer" }}>
+      <TableCell
+        sx={{ width: "25px", cursor: "pointer" }}
+        component="th"
+        scope="node"
+        onClick={() => navigate(`/calls/${node.id}`)}
+      >
+        <CallIconComponent
+          direction={node.direction}
+          callType={node.call_type}
+        />
       </TableCell>
-      <TableCell>
-        <Link to={`/calls/${node.id}`}>{node.from}</Link>
+      <TableCell onClick={() => navigate(`/calls/${node.id}`)}>
+        <div>{node.from}</div>
       </TableCell>
-      <TableCell align="right">
+      <TableCell align="right" onClick={() => navigate(`/calls/${node.id}`)}>
         {dayjs(new Date(node.created_at)).fromNow()}
       </TableCell>
-      <TableCell align="right" sx={{ width: "25px" }}>
+      <TableCell
+        align="right"
+        sx={{ width: "25px" }}
+        onClick={() => dispatch(postCallListArchivePending({ id: node.id }))}
+      >
         {node.is_archived ? (
           <UnarchiveOutlinedIcon sx={{ color: "#acacac" }} fontSize={"small"} />
         ) : (
@@ -33,26 +52,4 @@ export function CallItemComponent(props: { node: any }) {
       </TableCell>
     </TableRow>
   );
-}
-
-function CallIcon(props: { direction: string; call_type: string }) {
-  const { direction, call_type } = props;
-
-  if (call_type === "voicemail") {
-    return <VoicemailIcon fontSize={"small"} sx={{ color: "yellow" }} />;
-  }
-
-  return direction === "outbound" ? (
-    <CallMadeIcon sx={{ color: getColorCall(call_type) }} />
-  ) : (
-    <CallReceivedIcon sx={{ color: getColorCall(call_type) }} />
-  );
-}
-
-function getColorCall(call_type: string) {
-  if (call_type === "missed") {
-    return "red";
-  }
-
-  return "green";
 }
