@@ -1,6 +1,6 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { Button, FormControlLabel, FormGroup, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import styled from "@emotion/styled";
 
 import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
@@ -9,14 +9,11 @@ import { fetchSignInPending, selectIsSignedIn } from "./sign-in.slice";
 import { Password } from "../../../ui/molecules/password";
 import { H4 } from "../../../ui/atoms/h4";
 import { P } from "../../../ui/atoms/p";
-import { Switch } from "../../../ui/atoms/switch";
-import theme from "../../../ui/themes";
 
 interface State {
   username: string;
   password: string;
   showPassword: boolean;
-  rememberMe: boolean;
 }
 
 export function SingInCard() {
@@ -28,7 +25,6 @@ export function SingInCard() {
     username: "",
     password: "",
     showPassword: false,
-    rememberMe: true,
   });
 
   useEffect(() => {
@@ -36,13 +32,6 @@ export function SingInCard() {
       return navigate("/calls");
     }
   }, [isSignedIn]);
-
-  const handleRememberMeChange = (
-    event: ChangeEvent<HTMLInputElement>,
-    checked: boolean
-  ) => {
-    setValues({ ...values, rememberMe: checked });
-  };
 
   const handleChange =
     (prop: keyof State) => (event: ChangeEvent<HTMLInputElement>) => {
@@ -85,20 +74,6 @@ export function SingInCard() {
             handleClickShowPassword={handleClickShowPassword}
             handleMouseDownPassword={handleMouseDownPassword}
           />
-        </Row>
-        <Row>
-          <FormGroup>
-            <FormControlLabel
-              control={
-                <Switch
-                  onChange={handleRememberMeChange}
-                  checked={values.rememberMe}
-                />
-              }
-              label="Remember me"
-              sx={{ color: theme.palette.text.secondary, userSelect: "none" }}
-            />
-          </FormGroup>
         </Row>
         <Row>
           <Button
