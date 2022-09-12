@@ -16,7 +16,7 @@ The project is using the `features` and `pages` file structure with DDD and Scre
 
 The `ui` folder is here in substiture of the more common `components` folder to be able to have more granularity and specification to the different ways a component can be. Usely on a big project `components` will be packed, but a `ui` folder with the atomic design approach solves that problem and make a big project with lots of components more manageable.
 
-Finally it uses `kebab-case` to name files and folders instead of the more common `CamelCase` to avoid to have to pull your hair once or twice every year because `CameCase` [broke your CI/CD pipeline](https://twitter.com/kentcdodds/status/1249870276688371713).
+Finally it uses `kebab-case` to name files and folders instead of the more common `camelCase`/`PascalCase` to avoid to have to pull your hair once or twice every year because `CameCase` [broke your CI/CD pipeline](https://twitter.com/kentcdodds/status/1249870276688371713).
 
 The project has an:
 
