@@ -21,9 +21,7 @@ export function CallListComponent() {
   const maxPage = Math.floor(totalCount / 10);
 
   useEffect(() => {
-    console.log("useEffect");
     dispatch(fetchCallListPending({}));
-    return console.log("returned");
   }, []);
 
   return (
