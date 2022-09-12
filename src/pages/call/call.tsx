@@ -4,7 +4,7 @@ import { CallShowComponent } from "../../features/calls/calls-show/call-show.com
 import { H4 } from "../../ui/atoms/h4";
 import { Breadcrumbs, Typography } from "@mui/material";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 
 export function Call() {
   const { id } = useParams();
@@ -38,21 +38,25 @@ export function Call() {
 const CallsContainer = styled.div``;
 
 const TitleContainer = styled.div`
-  margin: 2rem;
+  margin: 1rem;
   text-align: center;
 
-  @media (min-width: 700px) {
-    margin: 1rem 4rem;
+  @media (min-width: 640px) {
+    margin: 2rem 4rem;
     text-align: left;
   }
 `;
 
 const BreadcumbsContainer = styled.div`
   margin: 2rem;
-  text-align: center;
 
-  @media (min-width: 700px) {
+  @media (min-width: 640px) {
     margin: 1rem 4rem;
     text-align: left;
   }
+`;
+
+const Link = styled(RouterLink)`
+  color: #595959;
+  text-decoration: none;
 `;

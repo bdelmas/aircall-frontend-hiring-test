@@ -8,12 +8,17 @@ import {
   StrictEffect,
 } from "redux-saga/effects";
 
-import { callShowSlice, fetchCallShowFullfilled } from "./call-show.slice";
+import {
+  callShowSlice,
+  fetchCallShowFullfilled,
+  fetchCallShowRejected,
+} from "./call-show.slice";
 import {
   fetchCallShowPayload,
   callShowAPI,
   callShowDTO,
 } from "./call-show.api";
+import { cleanCookies } from "universal-cookie/es6/utils";
 
 export function* callShowSaga() {
   yield all([fork(watchfetchCallShowPending)]);
@@ -33,6 +38,8 @@ function* fetchCallShow(
     let { data } = yield call(callShowAPI.fetchCallShow(action));
     yield put(fetchCallShowFullfilled({ node: data }));
   } catch (e) {
-    yield put({ type: callShowSlice.actions.fetchCallShowRejected.type });
+    cleanCookies();
+    yield put(fetchCallShowRejected({}));
+    window.location.href = "sign-in";
   }
 }

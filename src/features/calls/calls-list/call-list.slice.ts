@@ -65,16 +65,17 @@ export const callListSlice = createSlice({
     fetchCallListRejected: (state, action) => {
       state.status = "failed";
     },
-    postCallListArchiveFullfilled: (state, action) => {
+    putCallListArchiveFullfilled: (state, action) => {
+      const { id, is_archived } = action.payload;
+      const index = state.nodes.findIndex((n) => n.id === id);
+
       state.status = "idle";
-      // state.nodes = action.payload.nodes;
-      // state.totalCount = action.payload.totalCount;
-      // state.hasNextPage = action.payload.hasNextPage;
+      state.nodes[index].is_archived = is_archived;
     },
-    postCallListArchivePending: (state, action) => {
+    putCallListArchivePending: (state, action) => {
       state.status = "loading";
     },
-    postCallListArchiveRejected: (state, action) => {
+    putCallListArchiveRejected: (state, action) => {
       state.status = "failed";
     },
   },
@@ -97,9 +98,9 @@ export const {
   fetchCallListFullfilled,
   fetchCallListPending,
   fetchCallListRejected,
-  postCallListArchiveFullfilled,
-  postCallListArchiveRejected,
-  postCallListArchivePending,
+  putCallListArchiveFullfilled,
+  putCallListArchiveRejected,
+  putCallListArchivePending,
 } = callListSlice.actions;
 
 export const selectCallListNodes = (state: RootState) => state.callList.nodes;

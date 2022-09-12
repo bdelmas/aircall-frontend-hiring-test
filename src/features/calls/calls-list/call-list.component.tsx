@@ -39,7 +39,7 @@ const CallListContainer = styled.div`
   width: auto;
   margin-top: 2rem;
 
-  @media (min-width: 740px) {
+  @media (min-width: 640px) {
     margin: 4rem;
 
     border-radius: 1rem;

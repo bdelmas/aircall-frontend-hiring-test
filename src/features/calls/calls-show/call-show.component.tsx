@@ -5,6 +5,8 @@ import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import styled from "@emotion/styled";
 import _ from "lodash";
 import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import relativeTime from "dayjs/plugin/relativeTime";
 
 import { useAppDispatch, useAppSelector } from "../../../app/app.hooks";
 import {
@@ -19,6 +21,8 @@ export function CallShowComponent() {
   const dispatch = useAppDispatch();
   const call = useAppSelector(selectCallShowNodes);
   let { id } = useParams();
+  dayjs.extend(duration);
+  dayjs.extend(relativeTime);
 
   useEffect(() => {
     dispatch(fetchCallShowPending({ id }));
@@ -60,11 +64,13 @@ export function CallShowComponent() {
         <Row>Caller's number: {call.from}</Row>
         <Row>Callee's number: {call.to}</Row>
         <Row>Aircall number used: {call.via}</Row>
-        <Row>Lasted: {call.duration}s</Row>
+        <Row>
+          Lasted: about {dayjs.duration(call.duration, "seconds").humanize()}
+        </Row>
       </CallShowContainer>
       {!_.isEmpty(call.notes) && (
         <CallShowContainer>
-          <H4 sx={{ display: "inline-block" }}>Notes:</H4>
+          <H4 sx={{ display: "inline-block", paddingLeft: "16px" }}>Notes:</H4>
           {call.notes!.map((n) => {
             return <Note key={n.id}>{n.content}</Note>;
           })}
@@ -82,7 +88,7 @@ const CallShowContainer = styled.div`
 
   padding: 1rem;
 
-  @media (min-width: 740px) {
+  @media (min-width: 640px) {
     margin: 4rem;
 
     border-radius: 1rem;

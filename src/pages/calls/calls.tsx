@@ -1,13 +1,29 @@
 import { CallListComponent } from "../../features/calls/calls-list/call-list.component";
 import { H4 } from "../../ui/atoms/h4";
 import styled from "@emotion/styled";
+import { Breadcrumbs, Typography } from "@mui/material";
 
 export function Calls() {
   return (
     <CallsContainer>
       <TitleContainer>
-        <H4 sx={{ display: "inline-block" }}>Call history</H4>
+        <H4 sx={{ display: "inline-block" }}>Calls History</H4>
       </TitleContainer>
+      <BreadcumbsContainer>
+        <Breadcrumbs aria-label="breadcrumb">
+          <Typography
+            sx={{
+              textOverflow: "ellipsis",
+              overflow: "hidden",
+              width: "160px",
+              whiteSpace: "nowrap",
+            }}
+            color="text.primary"
+          >
+            Calls
+          </Typography>
+        </Breadcrumbs>
+      </BreadcumbsContainer>
       <CallListComponent />
     </CallsContainer>
   );
@@ -16,10 +32,19 @@ export function Calls() {
 const CallsContainer = styled.div``;
 
 const TitleContainer = styled.div`
-  margin: 2rem;
+  margin: 1rem;
   text-align: center;
 
-  @media (min-width: 700px) {
+  @media (min-width: 640px) {
+    margin: 2rem 4rem;
+    text-align: left;
+  }
+`;
+
+const BreadcumbsContainer = styled.div`
+  margin: 2rem;
+
+  @media (min-width: 640px) {
     margin: 1rem 4rem;
     text-align: left;
   }

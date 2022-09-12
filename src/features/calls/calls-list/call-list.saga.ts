@@ -11,13 +11,15 @@ import {
 import {
   callListSlice,
   fetchCallListFullfilled,
-  postCallListArchiveFullfilled,
+  fetchCallListRejected,
+  putCallListArchiveFullfilled,
+  putCallListArchiveRejected,
 } from "./call-list.slice";
 import {
   fetchCallListPayload,
   callListAPI,
   callListDTO,
-  postCallListArchivePayload,
+  putCallListArchivePayload,
 } from "./call-list.api";
 
 export function* callListSaga() {
@@ -41,25 +43,24 @@ function* fetchCallList(
     let { data } = yield call(callListAPI.fetchCallList(action));
     yield put(fetchCallListFullfilled(data));
   } catch (e) {
-    yield put({ type: callListSlice.actions.fetchCallListRejected.type });
+    yield put(fetchCallListRejected({}));
   }
 }
 
 function* watchPostCallListArchivePending() {
   yield takeLatest(
-    callListSlice.actions.postCallListArchivePending.type,
-    postCallListArchive
+    callListSlice.actions.putCallListArchivePending.type,
+    putCallListArchive
   );
 }
 
-function* postCallListArchive(
-  action: PayloadAction<postCallListArchivePayload>
+function* putCallListArchive(
+  action: PayloadAction<putCallListArchivePayload>
 ): Generator<StrictEffect, void, callListDTO> {
   try {
-    let { data } = yield call(callListAPI.postCallListArchive(action));
-    console.log(data);
-    yield put(postCallListArchiveFullfilled(data));
+    let { data } = yield call(callListAPI.putCallListArchive(action));
+    yield put(putCallListArchiveFullfilled(data));
   } catch (e) {
-    yield put({ type: callListSlice.actions.postCallListArchiveRejected.type });
+    yield put(putCallListArchiveRejected({}));
   }
 }

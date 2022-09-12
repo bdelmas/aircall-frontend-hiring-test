@@ -27,8 +27,8 @@ function* fetchSignIn(
     let { data } = yield call(signInAPI.fetchSignIn(action));
 
     const cookies = new Cookies();
-    cookies.set("access_token", data.access_token);
-    cookies.set("refresh_token", data.refresh_token);
+    cookies.set("access_token", data.access_token, { path: "/" });
+    cookies.set("refresh_token", data.refresh_token, { path: "/" });
 
     yield put(fetchSignInFullfilled(data.user));
   } catch (e) {

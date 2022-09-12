@@ -10,7 +10,7 @@ import UnarchiveOutlinedIcon from "@mui/icons-material/UnarchiveOutlined";
 import { Link } from "react-router-dom";
 import { CallIconComponent } from "../../../../ui/components/call-icon.component";
 import { useNavigate } from "react-router";
-import { postCallListArchivePending } from "../call-list.slice";
+import { putCallListArchivePending } from "../call-list.slice";
 import { useAppDispatch } from "../../../../app/app.hooks";
 
 export function CallItemComponent(props: { node: any }) {
@@ -42,7 +42,7 @@ export function CallItemComponent(props: { node: any }) {
       <TableCell
         align="right"
         sx={{ width: "25px" }}
-        onClick={() => dispatch(postCallListArchivePending({ id: node.id }))}
+        onClick={() => dispatch(putCallListArchivePending({ id: node.id }))}
       >
         {node.is_archived ? (
           <UnarchiveOutlinedIcon sx={{ color: "#acacac" }} fontSize={"small"} />
