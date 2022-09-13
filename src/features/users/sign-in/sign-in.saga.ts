@@ -9,7 +9,11 @@ import {
 } from "redux-saga/effects";
 import Cookies from "universal-cookie";
 
-import { signInSlice, fetchSignInFullfilled } from "./sign-in.slice";
+import {
+  signInSlice,
+  fetchSignInFullfilled,
+  fetchSignInRejected,
+} from "./sign-in.slice";
 import { fetchSignInPayload, signInAPI, signInDTO } from "./sign-in.api";
 
 export function* signInSaga() {
@@ -32,6 +36,6 @@ function* fetchSignIn(
 
     yield put(fetchSignInFullfilled(data.user));
   } catch (e) {
-    yield put({ type: signInSlice.actions.fetchSignInRejected.type });
+    yield put(fetchSignInRejected({}));
   }
 }
