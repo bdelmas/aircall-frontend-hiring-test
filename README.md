@@ -1,18 +1,5 @@
 # Aircall Challenge
 
-TLDR: `yarn p` and `yarn c`.
-
-When you run the challenge, be sure to run it in production mode (`yarn p`). If you want to run it in `dev` mode, remember that it is running with the `strict mode` on so some bugs in `dev` mode may appear but won't appear in `prod`.
-
-Because `strict mode` is used in `dev` mode, there is discrepencies between `prod` and `dev`, because React will treat the lifecycle more strictly. React does it to be able to spot lifecycle bugs more easily. But it can also add bugs on it's on because of that lifecycle change. You can see the effect for instance on this challenge. If you run it in `dev` mode some API calls will be done twice. But if you run it in `prod` mode with `yarn p` all API calls will done as expected and will be called only once.
-
-To see more about this, you can check the React documentation of `strict mode` [here](https://reactjs.org/docs/strict-mode.html).
-
-This [link](https://stackoverflow.com/a/60619061) from Stackoverflow summaries it:
-
->StrictMode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them (which can be quite useful).
-
-
 ## Project Structure
 The project is using the `features` and `pages` file structure with DDD and Screaming Architecture. A good intro can be found [here](https://profy.dev/article/react-folder-structure#discussion-feature-driven-folder-structure-and-screaming-architecture).
 
@@ -40,17 +27,35 @@ What is missing:
 - Handle real-time events (Whenever a call is archived or a note is being added to a call, these changes should be reflected on the UI immediately) I tried but I can't seem to make it work so far.
 
 What is done:
-- Display a paginated list of calls that you’ll retrieve from the API,
-- Display the call details view if the user clicks on a call. the view should display all the data related to the call itself,
-- Be able to archive one or several calls. (In case it's not obvious, it's the little purple or light grey icon box on the right. Both present on the index and the details view of the call. You can click on it.),
-- Use Typescript,
-- There is a breadcrumb menu where there is the blue home,
-- Sign-in page, and logout,
-- Cookies,
-- This little documentation,
-- Tests, like I said to Boris I know many things but I do have to learn how to do testing in React. I actually learn to use Cypress today and wow! It is such a cool tool to use so here we go E2E tests done!
-- Good architecture principles applied in this app with all its bells and wisles (thunks and saga, features folders, atomic design, DDD, cypress...),
-- And not too shabby UI/UX design with mobile (+ 375px screen width) and desktop designs being supported.
+- Display a **paginated** list of calls that you’ll retrieve from the API,
+- Display the **call details view** if the user clicks on a call. the view should display all the data related to the call itself,
+- Be able to **archive** one or several calls. (In case it's not obvious, it's the little purple or light grey icon box on the right. **Both present** on the **index** and the **details view** of the call. You can click on it.),
+- Use **Typescript**,
+- There is a **breadcrumb menu** where the blue home icon is,
+- **Sign-in page**, and **logout**,
+- **Cookies**,
+- **This little documentation**,
+- Tests, like I said to Boris I know many things but I do have to learn how to do testing in React. I actually learn to use **Cypress** today and wow! It is such a cool tool to use so here we go **E2E tests done**!
+- **Good architecture principles** applied in this app with all its bells and whistles (thunks and saga, features folders, atomic design, DDD, cypress...), I understand that kebab-case is more opinionated and not that famous thought,
+- And not too shabby **UI/UX design** with **mobile** (+ 375px screen width) and **desktop** designs being supported.
+
+
+## React Scrict mode can create problems 
+
+TLDR: `yarn p` and `yarn c` to avoid them and check the app.
+
+When you run the challenge, be sure to run it in production mode (`yarn p`). If you want to run it in `dev` mode, remember that it is running with the `strict mode` on so some bugs in `dev` mode may appear but won't appear in `prod`. What is that if you don't know about it?
+
+This [link](https://stackoverflow.com/a/60619061) from Stackoverflow summaries it:
+
+>StrictMode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them (which can be quite useful).
+
+Because `strict mode` is used in `dev` mode, there is discrepencies between `prod` and `dev`, because React will treat the lifecycle more strictly. React does it to be able to spot lifecycle bugs more easily. But it can also add bugs on it's on because of that lifecycle change. 
+
+You can see this effect for instance on this challenge. If you run it in `dev` mode, some API calls will be done twice. But if you run it in `prod` mode with `yarn p` all API calls will be done as expected and will be called only once.
+
+To see more about this, you can check the React documentation of `strict mode` [here](https://reactjs.org/docs/strict-mode.html).
+
 
 
 ----
