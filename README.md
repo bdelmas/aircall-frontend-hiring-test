@@ -8,15 +8,11 @@ To see more about this, you can check the React documentation of `strict mode` [
 
 This [link](https://stackoverflow.com/a/60619061) from Stackoverflow summaries it:
 
-StrictMode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them (which can be quite useful).
+>StrictMode renders components twice (on dev but not production) in order to detect any problems with your code and warn you about them (which can be quite useful).
 
 
-### Project Structure
+## Project Structure
 The project is using the `features` and `pages` file structure with DDD and Screaming Architecture. A good intro can be found [here](https://profy.dev/article/react-folder-structure#discussion-feature-driven-folder-structure-and-screaming-architecture).
-
-The `ui` folder is here in substitute of the more common `components` folder to be able to have more granularity and specification to the different ways what a component can be. On a big project `components` will be quickly packed, but a `ui` folder with the atomic design approach solves that problem and make it easier and more manageable even with a big project with lots of components.
-
-Finally it uses `kebab-case` to name files and folders instead of the more common `camelCase`/`PascalCase` to avoid to have to pull your hair once or twice every year because `cameCase` [broke your CI/CD pipeline](https://twitter.com/kentcdodds/status/1249870276688371713).
 
 The project has an:
 
@@ -25,7 +21,12 @@ The project has an:
 - `pages` folder, contains the different pages of the app,
 - `ui` folder, contains the themes and every component big or small that are shared accross the app.
 
-### Desktop and Mobile
+The `ui` folder is here in substitute of the more common `components` folder to be able to have more granularity and specification to the different ways what a component can be. On a big project `components` will be quickly packed, but a `ui` folder with the atomic design approach solves that problem and make it easier and more manageable even with a big project with lots of components.
+
+Finally it uses `kebab-case` to name files and folders instead of the more common `camelCase`/`PascalCase` to avoid to have to pull your hair once or twice every year because `cameCase` [broke your CI/CD pipeline](https://twitter.com/kentcdodds/status/1249870276688371713).
+
+
+## Desktop and Mobile
 All screens starting from `375px` and higher are supported. It's the Mobile M screen on Chrome DevTools.
 
 ### 
@@ -34,17 +35,15 @@ All screens starting from `375px` and higher are supported. It's the Mobile M sc
 
 ## Available Scripts
 
-In the project directory, you can run:
-
 ### `yarn s` or `yarn start`
 
-Runs the app in the development mode.
+Runs the app in the `development` mode.
 
 ### `yarn p`
-Runs the app in the production mode.
+Runs the app in the `production` mode.
 
 ### `yarn pp`
-Runs the app in the production mode, with the profile option on.
+Runs the app in the `production` mode, with the `profile` option on.
 
 ### `yarn test`
 
