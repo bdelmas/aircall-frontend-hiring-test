@@ -17,7 +17,7 @@ export function CallItemComponent(props: { node: any }) {
   dayjs.extend(relativeTime);
 
   return (
-    <TableRow sx={{ cursor: "pointer" }}>
+    <TableRow sx={{ cursor: "pointer" }} data-test-id="CallItemComponent">
       <TableCell
         sx={{ width: "25px", cursor: "pointer" }}
         component="th"

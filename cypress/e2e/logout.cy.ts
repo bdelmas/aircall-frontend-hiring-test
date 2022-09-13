@@ -32,13 +32,13 @@ describe("logout", () => {
     cy.findByRole("heading", { name: /calls list/i }).should("be.visible");
 
     // Got to the details page
-    cy.get(":nth-child(1) > .css-1ex1afd-MuiTableCell-root").click();
+    cy.get('[data-test-id="CallItemComponent"]').first().click();
 
     cy.findByRole("heading", { name: /call details/i }).should("be.visible");
 
     // Logout
     cy.get('[data-testid="LogoutIcon"] > path').click();
 
-    cy.get(".MuiTypography-h4").should("be.visible");
+    cy.findByRole("heading", { name: /welcome back/i }).should("be.visible");
   });
 });
