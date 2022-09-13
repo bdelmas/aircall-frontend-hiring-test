@@ -30,22 +30,22 @@ Finally it uses `kebab-case` to name files and folders instead of the more commo
 All screens starting from `375px` and higher are supported. It's the Mobile M screen on Chrome DevTools.
 
 ## Features
+What is missing:
+- Group calls by date
+- Handle real-time events (Whenever a call is archived or a note is being added to a call, these changes should be reflected on the UI immediately) I tried but I can't seem to make it work so far.
+- Tests, like I said to Boris I know many things but I do have to learn how to do testing in React.
 
 What is done:
 - Display a paginated list of calls that you’ll retrieve from the API.
 - Display the call details view if the user clicks on a call. the view should display all the data related to the call itself.
-- Be able to archive one or several calls.
+- Be able to archive one or several calls. (In case it's not obvious, it's the little purple or light grey icon box on the right. Both present on the index and the details view of the call. You can click on it.)
 - Use Typescript.
+- There is a breadcrumb menu where there is the blue home.
 - Sign-in page, and logout.
 - Cookies.
-- Good architecture app with its belts and wisles (thunks, saga, features folders, atomic design...).
 - This little documentation
-- And not too shabby UI/UX design with mobile (+ 375px screen width) and desktop design supported.
-
-What is missing:
-- Group calls by date
-- Handle real-time events (Whenever a call is archived or a note is being added to a call, these changes should be reflected on the UI immediately) I tried but I can't seem to make it work so far.
-- Tests
+- Good architecture app with its belts and wisles (thunks, saga, features folders, atomic design, DDD...).
+- And not too shabby UI/UX design with mobile (+ 375px screen width) and desktop design being supported.
 
 
 ----
